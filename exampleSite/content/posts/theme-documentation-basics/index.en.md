@@ -215,8 +215,6 @@ languageName = "English"
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = false
 
-# default amount of posts in each pages
-paginate = 12
 # copyright description used only for seo schema
 copyright = ""
 
@@ -229,6 +227,11 @@ enableEmoji = true
 
 # ignore some build errors
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+
+[pagination]
+# default amount of posts in each pages
+pagerSize = 12
 
 # Author config
 [author]
@@ -322,21 +325,25 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # {{< version 0.2.0 >}} Section (all posts) page config
   [params.section]
-    # special amount of posts in each section page
-    paginate = 20
     # date format (month and day)
     dateFormat = "01-02"
     # amount of RSS pages
     rss = 10
 
+    [params.section.pagination]
+    # special amount of posts in each section page
+    pagerSize = 20
+
   # {{< version 0.2.0 >}} List (category or tag) page config
   [params.list]
-    # special amount of posts in each list page
-    paginate = 20
     # date format (month and day)
     dateFormat = "01-02"
     # amount of RSS pages
     rss = 10
+
+    [params.list.pagination]
+    # special amount of posts in each list page
+    pagerSize = 20
 
   # {{< version 0.2.0 >}} App icon config
   [params.app]
@@ -399,11 +406,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # Home page posts
     [params.home.posts]
       enable = true
-      # special amount of posts in each home posts page
-      paginate = 6
       # {{< version 0.2.0 deleted >}} replaced with hiddenFromHomePage in params.page
       # default behavior when you don't set "hiddenFromHomePage" in front matter
       defaultHiddenFromHomePage = false
+      [params.home.posts.pagination]
+      # special amount of posts in each home posts page
+      pagerSize = 6
 
   # Social config about the author
   [params.social]
