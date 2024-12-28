@@ -217,8 +217,7 @@ languageName = "简体中文"
 # 是否包括中日韩文字
 hasCJKLanguage = true
 
-# 默认每页列表显示的文章数目
-paginate = 12
+
 # 谷歌分析代号 [UA-XXXXXXXX-X]
 googleAnalytics = ""
 # 版权描述，仅仅用于 SEO
@@ -233,6 +232,10 @@ enableEmoji = true
 
 # 忽略一些构建错误
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+[pagination]
+# 默认每页列表显示的文章数目
+pagerSize = 12
 
 # 作者配置
 [author]
@@ -326,21 +329,23 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # {{< version 0.2.0 >}} Section (所有文章) 页面配置
   [params.section]
-    # section 页面每页显示文章数量
-    paginate = 20
     # 日期格式 (月和日)
     dateFormat = "01-02"
     # RSS 文章数目
     rss = 10
+    [params.section.pagination]
+    # section 页面每页显示文章数量
+    pagerSize = 20
 
   # {{< version 0.2.0 >}} List (目录或标签) 页面配置
   [params.list]
-    # list 页面每页显示文章数量
-    paginate = 20
     # 日期格式 (月和日)
     dateFormat = "01-02"
     # RSS 文章数目
     rss = 10
+    [params.list.pagination]
+    # list 页面每页显示文章数量
+    pagerSize = 20
 
   # {{< version 0.2.0 >}} 应用图标配置
   [params.app]
@@ -403,12 +408,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # 主页文章列表
     [params.home.posts]
       enable = true
-      # 主页每页显示文章数量
-      paginate = 6
       # {{< version 0.2.0 deleted >}} 被 params.page 中的 hiddenFromHomePage 替代
       # 当你没有在文章前置参数中设置 "hiddenFromHomePage" 时的默认行为
       defaultHiddenFromHomePage = false
-
+      [params.home.posts.pagination]
+      # 主页每页显示文章数量
+      pagerSize = 6
+    
   # 作者的社交信息设置
   [params.social]
     GitHub = "xxxx"
