@@ -493,11 +493,14 @@ class Theme {
             const $mermaidElements = document.getElementsByClassName('mermaid');
             if ($mermaidElements.length) {
                 mermaid.initialize({startOnLoad: false, theme: this.isDark ? 'dark' : 'neutral', securityLevel: 'loose'});
-                this.util.forEach($mermaidElements, $mermaid => {
-                    mermaid.render('svg-' + $mermaid.id, this.data[$mermaid.id], svgCode => {
-                        $mermaid.innerHTML = svgCode;
-                    }, $mermaid);
-                });
+                this.util.forEach($mermaidElements, async ($mermaid) => {
+                    try {
+                      const { svg } = await mermaid.render(`svg-${$mermaid.id}`, this.data[$mermaid.id]);
+                      $mermaid.innerHTML = svg;
+                    } catch (error) {
+                      console.error('Mermaid rendering failed:', error);
+                    }
+                  });
             }
         });
         this.switchThemeEventSet.add(this._mermaidOnSwitchTheme);
